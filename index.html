@@ -10,7 +10,7 @@
 <body>
     <div class="calc">
         <div class="calc-screen">
-           <p>0</p>
+           <p></p>
         </div>
         <div class="buttons">
          <div class="btn ac bg-grey">ac</div>
@@ -64,68 +64,81 @@ function clearAll(){
 
 document.querySelector('.ac').onclick=clearAll
 document.querySelector('.buttons').onclick=(event)=>{
-    if (!event.target.classList.contains('btn'))return
+    // alert("s")
+    // if (!event.target.classList.contains('btn'))return
 
-    if (!event.target.classList.contains('ac'))return
-    out.textContent=''
+    // if (!event.target.classList.contains('ac'))return
+    // out.textContent=''
 
-    const key= event.target.textContent
+    let key= event.target.textContent
 
-    if (digit.includes(key)){
-        if (b ===''&& sign ===''){
-            a += key
+    console.log(event.target.textContent)
+    
+    if (key == "=") {
+        out.textContent += "=" + eval(out.textContent)
+        // console.log(eval(out.textContent))
+    }
+    else {
 
-            out.textContent = a
-        }
-        else if (a!=='' && b!=='' && finish){
-            b=key
-            finish = false
-            out.textContent=b 
-        }
-        else {
-            b += key
-            out.textContent=b
-        }
-        console.table(a,b,sign)
-        return
+        out.textContent += key
     }
 
-    if (action.includes(key)){
-        sign=key
-        out.textContent=sign
-        console.table(a,b,sign)
-        return
-    }
+    // if (digit.includes(key)){
+    //     if (b ===''&& sign ===''){
+    //         alert(1)
+    //         a += key
 
-    if(key === '='){
-        if(b==='')b=a
-        switch(sign){
-        case "+":a= (+a)+(+b)
-            break
-        case "-":
-            a=a-b
-            break
-        case "x":a=a*b
-            break
-        case "/":
-             if(b === '0'){
-                 out.textContent='ошибка'
-                 a=''
-                 b=''
-                 sign=''
-                 return
-             }
-             a=a/b
-             break
-        case "%":
-            a=a%b
-            break
-        }
+    //         out.textContent = a
+    //     }
+    //     else if (a!=='' && b!=='' && finish){
+    //         b=key
+    //         finish = false
+    //         out.textContent=b 
+    //     }
+    //     else {
+    //         b += key
+    //         out.textContent=b
+    //     }
+    //     console.table(a,b,sign)
+    //     return
+    // }
 
-        finish=true
-        out.textContent=a
-        console.table(a,b,sign)
-    }
+    // if (action.includes(key)){
+    //     sign=key
+    //     out.textContent=sign
+    //     console.table(a,b,sign)
+    //     return
+    // }
+
+    // if(key === '='){
+    //     if(b==='')b=a
+    //     switch(sign){
+    //     case "+":a= (+a)+(+b)
+    //         break
+    //     case "-":
+    //         a=a-b
+    //         break
+    //     case "x":a=a*b
+    //         break
+    //     case "/":
+    //          if(b === '0'){
+    //              out.textContent='ошибка'
+    //              a=''
+    //              b=''
+    //              sign=''
+    //              return
+    //          }
+    //          a=a/b
+    //          break
+    //     case "%":
+    //         a=a%b
+    //         break
+    //     }
+
+    //     finish=true
+    //     out.textContent=a
+    //     console.table(a,b,sign)
+    // }
 }
 
 
